@@ -29,7 +29,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-gray-900">
         <FingerprintProvider
           apiKey={process.env.NEXT_PUBLIC_FINGERPRINT_API_KEY!}
           region="ap"

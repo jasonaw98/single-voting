@@ -38,16 +38,16 @@ export default function LeaderboardPage() {
   }
 
   return (
-    <main className="p-10">
+    <main className="p-10 text-white flex flex-col items-center">
       <h1 className="text-5xl font-bold mb-10">
         Live Leaderboard
       </h1>
 
-      <div className="space-y-4">
+      <div className="space-y-4 flex flex-col items-center w-full max-w-md">
         {teams.map((team: any, index) => (
           <div
             key={team.id}
-            className="border rounded-xl p-6 flex justify-between"
+            className="border rounded-xl p-6 flex justify-between items-center w-full"
           >
             <div>
               #{index + 1} {team.name}

@@ -66,12 +66,12 @@ export default function VotePage() {
   }
 
   return (
-    <main className="p-10">
+    <main className="flex flex-col items-center p-10 text-white">
       <h1 className="text-4xl font-bold">
         Vote Your Team
       </h1>
 
-      <div className="grid grid-cols-2 gap-4 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
         {teams.map((team: any) => (
           <div key={team.id} className="flex flex-col justify-center items-center gap-5">
             <img src={team.image_url} alt={team.name} width={500} height={500} className="rounded-xl aspect-video object-cover" />
