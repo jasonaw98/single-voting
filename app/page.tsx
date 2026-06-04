@@ -90,7 +90,7 @@ export default function VotePage() {
               alt={team.name}
               width={400}
               height={500}
-              className="rounded-xl aspect-video object-cover"
+              className="rounded-xl aspect-video object-cover shadow-lg shadow-zinc-600"
             />
             <button
               key={team.id}
