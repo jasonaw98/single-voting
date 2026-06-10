@@ -3,9 +3,27 @@
 import { useEffect, useState } from "react";
 import { useVisitorData } from "@fingerprint/react";
 import { toast } from "sonner";
+import Image from "next/image";
+
+const TEAMS = [
+  {
+    id: 1,
+    name: "Shine Borneo",
+    image_url: "/shine.jpeg",
+  },
+  {
+    id: 2,
+    name: "The Duet",
+    image_url: "/duet.JPG",
+  },
+  {
+    id: 3,
+    name: "Phoenix",
+    image_url: "/phoenix.jpeg",
+  },
+]
 
 export default function VotePage() {
-  const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(false);
   const [voted, setVoted] = useState(false);
 
@@ -13,17 +31,8 @@ export default function VotePage() {
     immediate: false,
   });
   useEffect(() => {
-    fetchTeams();
     getData();
   }, []);
-
-  async function fetchTeams() {
-    const res = await fetch("/api/teams");
-
-    const teamsData = await res.json();
-
-    setTeams(teamsData);
-  }
 
   async function vote(teamId: string) {
     try {
@@ -80,21 +89,15 @@ export default function VotePage() {
       <h1 className="text-4xl font-bold">Vote Your Team</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
-        {teams.map((team: any) => (
+        {TEAMS.map((team: any) => (
           <div
             key={team.id}
             className="flex flex-col justify-center items-center gap-5"
           >
-            <img
-              src={team.image_url}
-              alt={team.name}
-              width={400}
-              height={500}
-              className="rounded-xl aspect-video object-cover shadow-lg shadow-zinc-600"
-            />
+            <Image src={team.image_url} alt={team.name} width={400} height={500} className="rounded-xl aspect-video object-cover shadow-lg shadow-zinc-600" />
             <button
               key={team.id}
-              onClick={() => vote(team.id)}
+              onClick={() => vote(team.id.toString())}
               disabled={loading}
               className="px-6 py-3 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:bg-[#21e065] transition-colors duration-200 cursor-pointer"
             >
