@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
@@ -14,10 +14,10 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        // Check existing vote
+        // Check existing vote (only request id to reduce payload)
         const { data: existingVote } = await supabase
             .from("votes")
-            .select("*")
+            .select("id")
             .eq("fingerprint", fingerprint)
             .single();
 
@@ -61,10 +61,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({
             success: true,
         });
-    } catch (err) {
-        return NextResponse.json(
-            { error: "Server error" },
-            { status: 500 }
-        );
+    } catch (_err) {
+        return NextResponse.json({ error: "Server error" }, { status: 500 });
     }
 }

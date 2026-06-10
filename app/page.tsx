@@ -7,18 +7,18 @@ import Image from "next/image";
 
 const TEAMS = [
   {
-    id: 1,
+    id: 'a48f5fa8-783f-49b1-9b3e-5c87690985a8',
     name: "Shine Borneo",
     image_url: "/shine.jpeg",
   },
   {
-    id: 2,
+    id: '014b6295-7ba9-4ed1-bbec-8d78e2e12020',
     name: "The Duet",
     image_url: "/duet.JPG",
   },
   {
-    id: 3,
-    name: "Phoenix",
+    id: '84c84c76-148f-43ce-9b3a-e00959fb0667',
+    name: "Phoenix's Team",
     image_url: "/phoenix.jpeg",
   },
 ]
@@ -97,7 +97,7 @@ export default function VotePage() {
             <Image src={team.image_url} alt={team.name} width={400} height={500} className="rounded-xl aspect-video object-cover shadow-lg shadow-zinc-600" />
             <button
               key={team.id}
-              onClick={() => vote(team.id.toString())}
+              onClick={() => vote(team.id)}
               disabled={loading}
               className="px-6 py-3 rounded-full bg-[#1ED760] font-bold text-white tracking-widest uppercase transform hover:bg-[#21e065] transition-colors duration-200 cursor-pointer"
             >
